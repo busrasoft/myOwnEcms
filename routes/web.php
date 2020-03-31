@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('admin','Backend\DefaultController@index')->name('admin.Index');
+
+
 Route::get('admin/settings','Backend\SettingsController@index')->name('settings.Index');
-Route::get('admin/sortable','Backend\SettingsController@index')->name('settings.Sortable');
-Route::get('admin/settings/delete{id}','Backend\SettingsController@destroy')->name('settings.Destroy');
+Route::post('admin/sortable','Backend\SettingsController@index')->name('settings.Sortable');
+Route::get('admin/settings/delete{id}','Backend\SettingsController@destroy');
+Route::get('admin/settings/edit{id}','Backend\SettingsController@edit')->name('settings.Edit');
+Route::post('admin/update{id}','Backend\SettingsController@update')->name('settings.Update');

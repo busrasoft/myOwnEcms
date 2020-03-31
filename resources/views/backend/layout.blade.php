@@ -31,6 +31,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Bootstrap theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.12.0/build/css/themes/bootstrap.min.css"/>
 
+    <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 
 <!-- Bootstrap theme -->
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
