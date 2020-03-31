@@ -14,11 +14,13 @@ class SettingsController extends Controller
     }
 
     public function sortable(){
-        foreach($_POST['item'] as $key => $value){
-            $settings=Settings::find(intval($value));
-            $settings->settings_must=intval($key);
-            $settings->save();
-        }
-        echo true;
+    //print_r($_POST['item']);
+    foreach ($_POST['item'] as $key => $value)
+    {
+        $settings=Settings::find(intval($value));
+        $settings->settings_must=intval($key);
+        $settings->save();
+    }
+    echo true;
     }
 }
