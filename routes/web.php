@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('admin','Backend\DefaultController@index')->name('admin.Index');
+Route::get('admin/settings','Backend\SettingsController@index')->name('settings.Index');
