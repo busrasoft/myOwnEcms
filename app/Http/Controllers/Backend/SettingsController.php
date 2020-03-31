@@ -17,10 +17,20 @@ class SettingsController extends Controller
     //print_r($_POST['item']);
     foreach ($_POST['item'] as $key => $value)
     {
-        $settings=Settings::find(intval($value));
+    $settings=Settings::find(intval($value));
         $settings->settings_must=intval($key);
         $settings->save();
     }
     echo true;
     }
+    public function destroy($id){
+       
+        $settings = Settings::find($id);
+        if ($settings->delete()) {
+            return back()->with('success', 'İşlem Başarılı');
+        }
+
+        return back()->with('error', 'İşlem Başarısız');
+    }
+    
 }
