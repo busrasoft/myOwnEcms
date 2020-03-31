@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 Route::get('admin','Backend\DefaultController@index')->name('admin.Index');
 Route::get('admin/settings','Backend\SettingsController@index')->name('settings.Index');
+Route::get('admin/sortable','Backend\SettingsController@index')->name('settings.Sortable');

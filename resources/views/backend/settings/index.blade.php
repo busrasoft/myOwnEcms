@@ -19,12 +19,12 @@
             <th>Type</th>  
             <th></th>  
           </tr>  
-          <tbody>
+          <tbody id="sortable">
             @foreach ($data['adminSettings'] as $adminSettings)
 
-            <tr>
+            <tr id="{{$adminSettings->id}}">
             <td>{{$adminSettings->id}}</td>
-            <td>{{$adminSettings['settings_description']}}</td>
+            <td class="sortable">{{$adminSettings['settings_description']}}</td>
             <td>{{$adminSettings->settings_value}}</td>
             <td>{{$adminSettings->settings_key}}</td>
             <td>{{$adminSettings->settings_type}}</td>
@@ -38,5 +38,52 @@
       </table>
     </div>
     </div> 
+    
+
+<script>
+ 
+</script>
+
+
   </section>
+
+  <script type="text/javascript">
+    $(function(){
+
+        $.ajaxSetup({
+            headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $('#sortable').sortable({
+            revert: true,
+            handle: ".sortable",
+            stop: function (event, ui) {
+                var data = $(this).sortable('serialize');
+                $.ajax({
+                    type: "POST",
+                    data: data,
+                    url: "{{route('settings.Sortable')}}",
+                    success: function (msg) {
+                        // console.log(msg);
+                        if (msg) {
+                            alert("işlem başarılı");
+                        } else {
+                            alert("işlem başarısız");
+                        }
+                    }
+                });
+
+            }
+        });
+        $('#sortable').disableSelection();
+
+    });
+</script>
+
+
+
   @endsection
+  @section('css')@endsection
+  @section('js')@endsection
